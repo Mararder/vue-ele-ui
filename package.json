@@ -6,10 +6,15 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "commit": "git cz",
-    "install:husky": "husky install"
+    "git-hooks": "npm run install:husky && npm run pre-commit && npm run commit-msg",
+    "install:husky": "husky install",
+    "pre-commit": "husky add .husky/pre-commit \"npx lint-staged\"",
+    "commit-msg": "husky add .husky/commit-msg \"npx --no-install commitlint --edit \"$1\"\"",
+    "commit": "git cz"
   },
   "dependencies": {
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "core-js": "^3.6.5",
     "husky": "^7.0.2",
     "vue": "^3.0.0"
@@ -42,5 +47,10 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
