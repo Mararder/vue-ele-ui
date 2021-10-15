@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "init:local": "yarn remove:node_modules && yarn && yarn git-hooks",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -10,7 +11,8 @@
     "install:husky": "husky install",
     "pre-commit": "husky add .husky/pre-commit \"npx lint-staged\"",
     "commit-msg": "husky add .husky/commit-msg \"npx --no-install commitlint --edit \"$1\"\"",
-    "commit": "git cz"
+    "commit": "git cz",
+    "remove:node_modules": "npx rimraf node_modules"
   },
   "dependencies": {
     "@commitlint/cli": "^13.2.1",
